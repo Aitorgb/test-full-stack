@@ -1,0 +1,27 @@
+{
+  "name": "test-full-stack",
+  "version": "1.0.0",
+  "description": "This is a dudyfit test",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon -e hbs,js,css app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aitorgb/test-full-stack.git"
+  },
+  "author": "Aitor Guerrero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aitorgb/test-full-stack/issues"
+  },
+  "homepage": "https://github.com/Aitorgb/test-full-stack#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "nodemon": "^2.0.6",
+    "path": "^0.12.7"
+  }
+}

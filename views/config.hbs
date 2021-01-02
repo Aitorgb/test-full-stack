@@ -1,0 +1,73 @@
+<div class="container">
+    <h1 class="text-center my-4">Pantalla de configuración</h1>
+    <form>
+        {{#each data.coach}}
+
+        <div class="row mb-3">
+            <h6 class="col-md-12">
+                Entrenador {{add @index }}
+            </h6>
+        </div>
+        <div class="row">
+            <div class="col-md-3 form-group form-inline ">
+                <label class="mr-2" for="name">Nombre</label>
+                <input class="form-control col-md-8" type="text" value="{{this.name}}" name="name">
+            </div>
+            <div class="col-md-3 form-group form-inline">
+                <label class="mr-2" for="name">Valoración</label>
+                <input class="form-control col-md-5" type="text" value="{{this.reputation}}">
+            </div>
+            <div class="col-md-5 form-group form-inline">
+                <label class="mr-2" for="name">Maximo número de clientes</label>
+                <input class="form-control col-md-3" type="number" value="{{this.placesAvailable}}">
+            </div>
+
+        </div>
+        <hr />
+        {{/each}}
+
+        <div class="d-flex justify-content-end my-4">
+            <button type="button" data-toggle="modal" data-target="#modalDataClient"
+                class="btn btn-outline-dark d-md-100 mr-3 px-4 py-1">Ver tabla de clientes</button>
+            <button type="button" class="btn btn-primary px-4 py-1">Calcular resultados</button>
+        </div>
+
+    </form>
+    <div class="modal fade" id="modalDataClient" tabindex="-1" role="dialog" aria-labelledby="modalDataClientTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Valoración de los clientes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <table class="table table-striped text-center">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">Nombre del cliente</th>
+                                <th scope="col">Importancia de la reputación del entrenador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each data.clients}}
+                                <tr>
+                                    <th>{{this.name}}</th>
+                                    <td>{{this.reputationCoach}}</td>
+                                </tr>
+                            {{/each}}
+                    </table>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
