@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="text-center my-4">Pantalla de configuración</h1>
-    <form>
+    <form action="/result" method="POST">
         {{#each data.coach}}
 
         <div class="row mb-3">
@@ -8,28 +8,29 @@
                 Entrenador {{add @index }}
             </h6>
         </div>
-        <div class="row">
+        <div class="row justify-content-between">
             <div class="col-md-3 form-group form-inline ">
                 <label class="mr-2" for="name">Nombre</label>
-                <input class="form-control col-md-8" type="text" value="{{this.name}}" name="name">
+                <input class="form-control col-md-8" type="text" value="{{this.name}}" name={{this.name}}>
             </div>
             <div class="col-md-3 form-group form-inline">
                 <label class="mr-2" for="name">Valoración</label>
-                <input class="form-control col-md-5" type="text" value="{{this.reputation}}">
+                <input class="form-control col-md-5" type="text" value="{{this.reputation}}" name={{this.name}}>
             </div>
             <div class="col-md-5 form-group form-inline">
                 <label class="mr-2" for="name">Maximo número de clientes</label>
-                <input class="form-control col-md-3" type="number" value="{{this.placesAvailable}}">
+                <input class="form-control col-md-3" type="number" min="0" value="{{this.placesAvailable}}" name={{this.name}}>
             </div>
 
         </div>
         <hr />
         {{/each}}
 
+
         <div class="d-flex justify-content-end my-4">
             <button type="button" data-toggle="modal" data-target="#modalDataClient"
                 class="btn btn-outline-dark d-md-100 mr-3 px-4 py-1">Ver tabla de clientes</button>
-            <button type="button" class="btn btn-primary px-4 py-1">Calcular resultados</button>
+            <button type="submit" class="btn btn-primary px-4 py-1">Calcular resultados</button>
         </div>
 
     </form>

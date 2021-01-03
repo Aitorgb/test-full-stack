@@ -44,13 +44,13 @@
     "coach" : [
         {
             "name" : "A",
-            "reputation" : 3.2,
-            "placesAvailable" : 4
+            "reputation" : 4.5,
+            "placesAvailable" : 1
         },
         {
             "name" : "B",
-            "reputation" : 1.2,
-            "placesAvailable" : 3
+            "reputation" : 3.2,
+            "placesAvailable" : 4
         },
         {
             "name" : "C",

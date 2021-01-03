@@ -1,10 +1,69 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: content-box;
+html,
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: content-box;
+	font-size: 16px;
 }
 
 hr {
-    width: 95%;
-    border-top-color: rgba(0,0,0,.5)
+	width: 95%;
+	border-top-color: rgba(0, 0, 0, .5);
+}
+
+.list {
+	list-style: none; /* Remove list bullets */
+	padding: 0;
+	margin: 0;
+}
+
+.list > li:before {
+	content: "-";
+	padding-right: 6px;
+}
+
+.avatar {
+	vertical-align: middle;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.card > .card-body {
+	padding: 4px;
+}
+
+.card > .card-body > .container-text {
+	padding: 15px 10px;
+}
+
+.card > .card-header > .card-information {
+    background-color: #000;
+    border-radius: 50%;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.button-result {
+    border: 1px solid #b6b6b6;
+    border-radius: 5px 5px 0 0;
+    background-color: white;
+    padding: 5px 21px;
+    color: #9b9b9b;
+    border-bottom-color: gray;
+}
+
+.container-coach {
+    border: 1px solid gray;
+    padding: 34px;
+    margin-top: -1px;
+}
+
+.active-button {
+    border-color: gray gray #b6b6b6 gray;
 }
