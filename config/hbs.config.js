@@ -1,15 +1,22 @@
 const hbs = require('hbs');
-const path = require('path');
 
-hbs.registerPartials(path.join(__dirname, '../views/partials'));
 
-hbs.registerHelper('date', (date) => {
-  const format = (s) => (s < 10) ? '0' + s : s
-  var d = new Date(date)
-  return [format(d.getDate()), format(d.getMonth() + 1), d.getFullYear()].join('/')
-})
+hbs.registerHelper('add', function(value, options) {
+	return parseInt(value) + 1;
+});
 
-hbs.registerHelper("add", function(value, options)
-{
-    return parseInt(value) + 1;
+hbs.registerHelper('isDefined', function(value, options) {
+	return value.length >= 1;
+});
+
+hbs.registerHelper('clientNotSatisfied', function(clientSatisfied, totalClients) {
+	return totalClients - clientSatisfied 
+});
+
+hbs.registerHelper('satisfation', (dateCoach, totalClients) => {
+	const indexSatisfation = (dateCoach
+		.map((coach) => coach.clients.reduce((prev, client) => prev + parseFloat(client.satisfation), 0))
+    .reduce((prev, totalForCoach) => prev + totalForCoach, 0) / totalClients).toFixed(2);
+    
+  return indexSatisfation
 });

@@ -30,7 +30,9 @@ hr {
 }
 
 .card > .card-body {
-	padding: 4px;
+    padding: 4px;
+    height: 12em;
+   
 }
 
 .card > .card-body > .container-text {
@@ -41,12 +43,33 @@ hr {
     background-color: #000;
     border-radius: 50%;
     color: #fff;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+
+.none {
+    display: none !important;
+}
+
+.tooltip-inner {
+    font-size: 12px;
+}
+.tooltip-value {
+    font-weight: 200;
+    margin-right: 20px;
+}
+
+.tooltip-line {
+    font-weight: 600;
+    
+}
+
+.tooltip-line:first-child {
+    margin-bottom: 5px;
 }
 
 .button-result {
@@ -66,4 +89,8 @@ hr {
 
 .active-button {
     border-color: gray gray #b6b6b6 gray;
+}
+
+input:invalid {
+    border-color: #ff0000;
 }

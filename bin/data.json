@@ -1,17 +1,16 @@
 {
-    "clients": [
-        {
+    "clients": [{
             "name": "q",
             "reputationCoach": 2.6
         },
         {
             "name": "r",
             "reputationCoach": 3.7
-        }, 
+        },
         {
             "name": "s",
             "reputationCoach": 8.5
-        }, 
+        },
         {
             "name": "t",
             "reputationCoach": 9.7
@@ -23,44 +22,48 @@
         {
             "name": "v",
             "reputationCoach": 4.7
-        }, 
+        },
         {
             "name": "w",
             "reputationCoach": 5.6
-        }, 
+        },
         {
             "name": "x",
             "reputationCoach": 3.7
-        }, 
+        },
         {
             "name": "y",
             "reputationCoach": 8.1
-        }, 
+        },
         {
             "name": "z",
             "reputationCoach": 2.5
         }
     ],
-    "coach" : [
-        {
-            "name" : "A",
-            "reputation" : 4.5,
-            "placesAvailable" : 1
+    "coach": [{
+            "name": "A",
+            "reputation": 4.5,
+            "placesAvailable": 1
         },
         {
-            "name" : "B",
-            "reputation" : 3.2,
-            "placesAvailable" : 4
+            "name": "B",
+            "reputation": 3.2,
+            "placesAvailable": 4
         },
         {
-            "name" : "C",
-            "reputation" : 1.2,
-            "placesAvailable" : 3
+            "name": "C",
+            "reputation": 1.2,
+            "placesAvailable": 3
         },
         {
-            "name" : "D",
-            "reputation" : 3.4,
-            "placesAvailable" : 2
+            "name": "D",
+            "reputation": 3.4,
+            "placesAvailable": 2
+        },
+        {
+            "name": "E",
+            "reputation": 4.4,
+            "placesAvailable": 1
         }
     ]
 }

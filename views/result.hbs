@@ -2,43 +2,97 @@
     <h1 class="text-center my-4">Pantalla de resultados</h1>
 
     <div class="d-flex justify-content-start ">
-        <button class="button-result mr-1 active-button" type="button" name="coach">Entrenadores</button>
-        <button class="button-result" type="button" name="assessment">Valoración del conjunto</button>
+        <button id="coach-button" class="button-result mr-1 active-button" type="button"
+            name="coach">Entrenadores</button>
+        <button id="assessment-button" class="button-result" type="button" name="assessment">Valoración del
+            conjunto</button>
     </div>
-    <div class="row mx-0 container-coach">
-        {{!-- {{#each coach}} --}}
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    Entrenador 1
-
-                    <span class="card-information" data-toggle="tooltip" data-placement="bottom"
-                        title="Hooray!">i</span>
-                </div>
-                <div class="card-body">
-
-                    <img src="/images/avatar.png" alt="Avatar" class="avatar">
-                    <div class="container-text float-right">
-                        <h6 class="card-title">Nombre del entrenador</h6>
-                        <div class="card-text">
-                            <div>Clientes asignados:</div>
-                            <ul class="list">
-                                <li>Coffee</li>
-                                <li>Tea</li>
-                                <li>Milk</li>
-                            </ul>
+    <div class="mx-0 container-coach">
+        <div class="row justify-content-center" id="coach-result">
+            {{#each coach}}
+            <div class="col-lg-4 mb-3">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        Entrenador {{add @index }}
+                        <span class="card-information" data-toggle="tooltip" data-placement="bottom"
+                            title="<div class='tooltip-line'>Valoración: <span class='tooltip-value'>{{this.valoration}}</span></div> <div class='tooltip-line'>Max Clientes: <span class='tooltip-value'>{{this.placesAvailable}}</span></div>">i</span>
+                    </div>
+                    <div class="card-body">
+                        <img src="/images/avatar.png" alt="Avatar" class="avatar">
+                        <div class="container-text float-right">
+                            <h6 class="card-title">{{this.name}}</h6>
+                            <div class="card-text">
+                                <div>Clientes asignados:</div>
+                                <ul class="list">
+                                    {{#each this.clients}}
+                                    <li>Cliente "{{this.name}}"</li>
+                                    {{/each}}
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer text-muted">
-                    4 clientes asignados
+                    <div class="card-footer text-muted">
+                        {{this.clients.length}} clientes asignados
+                    </div>
                 </div>
             </div>
+            {{/each}}
+
         </div>
-
-
+        {{#if (isDefined unassignedClients) }}
+        <div class="row mt-3 justify-content-center text-primary">Falta por asignar {{unassignedClients.length}}
+            usuarios por falta de plazas disponibles en los entrenadores</div>
+        {{/if}}
+        <div class="none" id="assessment-result">
+            {{satisfation coach totalClients}}
+            <canvas id="my-chart" width="500" height="300"></canvas>
+        </div>
     </div>
     <div class="d-flex justify-content-end my-4">
-        <a href="/" type="button" class="btn btn-outline-dark float-right d-md-100 mr-3 px-4 py-1">Volver</a>
+        <a href="/" type="button" class="btn btn-outline-dark float-right d-md-100 mr-3 px-5 py-1">Volver</a>
     </div>
 </div>
+
+{{#if coach}}
+
+<script>
+
+    const ctx = document.getElementById('my-chart').getContext('2d');
+
+    const myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Clientes satisfechos', 'Clientes insatisfechos'],
+            datasets: [{
+                data: [{{ clientsSatisfied }}, {{ clientNotSatisfied clientsSatisfied totalClients }}],
+        backgroundColor: [
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 99, 132, 0.5)'
+        ],
+        borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(255,99,132,1)'
+        ],
+        hoverBackgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 99, 132, 0.9)'
+        ],
+        borderWidth: 1
+    }]
+        },
+    options: {
+
+        title: {
+            display: true,
+                text: `Grafica de satisfación. Total clientes: {{totalClients}}`
+        },
+
+    }
+    });
+
+
+
+</script>
+
+
+{{/if}}
