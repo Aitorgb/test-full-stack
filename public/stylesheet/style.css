@@ -94,3 +94,8 @@ hr {
 input:invalid {
     border-color: #ff0000;
 }
+
+
+#button-back {
+    padding: 0.4em 5em;
+}

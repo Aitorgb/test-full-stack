@@ -15,9 +15,10 @@
             </div>
             <div class="col-lg-3 form-group form-inline justify-content-lg-center">
                 <label class="mr-2" for="name">Valoración</label>
-                <input class="form-control col-md-5" type="text" value="{{this.reputation}}"
-                    name={{this.name}} required pattern="^(\d|(\d\.\d)|10){1}$"
-                    oninvalid="setCustomValidity('Número comprendido entre 1 y 10 con un decimal')">
+                <input class="form-control col-md-5" type="text" value="{{this.reputation}}" maxlength="3"
+                    name={{this.name}} required pattern="^([0-4](\.\d{1})?|5)$"
+                    oninvalid="setCustomValidity('Número comprendido entre 1 y 5 con un decimal')"
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" >
             </div>
             <div class="col-lg-5 form-group form-inline  justify-content-lg-end">
                 <label class="mr-2" for="name">Maximo número de clientes</label>

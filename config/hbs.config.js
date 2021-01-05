@@ -15,8 +15,19 @@ hbs.registerHelper('clientNotSatisfied', function(clientSatisfied, totalClients)
 
 hbs.registerHelper('satisfation', (dateCoach, totalClients) => {
 	const indexSatisfation = (dateCoach
-		.map((coach) => coach.clients.reduce((prev, client) => prev + parseFloat(client.satisfation), 0))
+		.map((coach) => coach.clients.reduce((prev, client) => parseFloat(client.satisfation) > 0.9 ? prev + 1 : prev, 0))
     .reduce((prev, totalForCoach) => prev + totalForCoach, 0) / totalClients).toFixed(2);
     
   return indexSatisfation
 });
+
+hbs.registerHelper('percentageSatisfation', (dateCoach, totalClients) => {
+	const indexSatisfation = (dateCoach
+		.map((coach) => coach.clients.reduce((prev, client) => parseFloat(client.satisfation) > 0.9 ? prev + 1 : prev, 0))
+    .reduce((prev, totalForCoach) => prev + totalForCoach, 0) / totalClients).toFixed(2);
+    
+  return indexSatisfation * 100
+});
+
+
+

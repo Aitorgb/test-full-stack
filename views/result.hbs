@@ -10,16 +10,16 @@
     <div class="mx-0 container-coach">
         <div class="row justify-content-center" id="coach-result">
             {{#each coach}}
-            <div class="col-lg-4 mb-3">
+            <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         Entrenador {{add @index }}
                         <span class="card-information" data-toggle="tooltip" data-placement="bottom"
                             title="<div class='tooltip-line'>Valoración: <span class='tooltip-value'>{{this.valoration}}</span></div> <div class='tooltip-line'>Max Clientes: <span class='tooltip-value'>{{this.placesAvailable}}</span></div>">i</span>
                     </div>
-                    <div class="card-body">
-                        <img src="/images/avatar.png" alt="Avatar" class="avatar">
-                        <div class="container-text float-right">
+                    <div class="card-body d-flex">
+                        <img src="/images/avatar.png" alt="Avatar" class="avatar mr-2">
+                        <div class="container-text">
                             <h6 class="card-title">{{this.name}}</h6>
                             <div class="card-text">
                                 <div>Clientes asignados:</div>
@@ -40,16 +40,40 @@
 
         </div>
         {{#if (isDefined unassignedClients) }}
-        <div class="row mt-3 justify-content-center text-primary">Falta por asignar {{unassignedClients.length}}
+        <div class="row mt-3 justify-content-center alert alert-warning">Falta por asignar {{unassignedClients.length}}
             usuarios por falta de plazas disponibles en los entrenadores</div>
         {{/if}}
-        <div class="none" id="assessment-result">
-            {{satisfation coach totalClients}}
-            <canvas id="my-chart" width="500" height="300"></canvas>
+        <div class="none mt-3 mx-3 text-justify font-weight-light" id="assessment-result">
+            <div>Indice de satisfación del conjunto de clientes: <span class="font-italic">{{satisfation coach totalClients}}</span></div>
+            <div>Porcentaje de clientes satisfechos: <span class="font-italic">{{percentageSatisfation coach totalClients}} %</span></div>
+            <div class="container">
+            <canvas id="my-chart" width="500" height="100"></canvas>
+</div>
+            <div class="row mt-3">
+                <h6 class="h6 font-italic">Calculo del indice de satisfación</h6>
+                <p>
+                    El calculo del indice de satisfación del conjunto de clientes se ha realizado de la siguiente
+                    manera:<br />
+                    Obtenemos de cada cliente una valoración de satisfación teniendo en cuenta la importancia que da en
+                    la reputación
+                    del entrenador.
+                    Cada cliente valora con una puntuación de 0 a 1, siendo 0 la valoración menos favorable y 1 la más
+                    favorable,
+                    teniendo en cuenta que si se le asigna un entrenador con una equivalencia en su reputación igual o
+                    superior a la
+                    importancia que él da a la reputación del entrenador, la valoración va a ser un 1 y si es
+                    ligeramente inferior
+                    el cliente dará una valoración ligeramente inferior al 1.
+                    En el resultado obtenido, se califica como clientes satisfechos a aquellos que dan una valoración
+                    desde el 0.9
+                    hasta el 1, considerando clientes insatisfechos a los que den una valoración inferior a 0.9.
+                    En la gráfica se muestra el numero de clientes satisfechos e insatisfechos.
+                </p>
+            </div>
         </div>
     </div>
     <div class="d-flex justify-content-end my-4">
-        <a href="/" type="button" class="btn btn-outline-dark float-right d-md-100 mr-3 px-5 py-1">Volver</a>
+        <a href="/" type="button" class="btn btn-outline-dark float-right d-md-100 mr-3" id="button-back">Volver</a>
     </div>
 </div>
 
@@ -81,11 +105,11 @@
     }]
         },
     options: {
-
         title: {
             display: true,
                 text: `Grafica de satisfación. Total clientes: {{totalClients}}`
         },
+        
 
     }
     });
