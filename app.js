@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 
@@ -19,6 +20,6 @@ app.set('view engine', 'hbs');
 const router = require('./config/routes.js');
 app.use('/', router);
 
-app.listen(3000, () => {
-  console.log(`'My Dudyfit test running on port 3000 🏋️‍♀️ 🤼‍♂️ ⛹️‍♂️`);
+app.listen(process.env.PORT, () => {
+  console.log(`'My Dudyfit test running on port ${process.env.PORT} 🏋️‍♀️ 🤼‍♂️ ⛹️‍♂️`);
 });
