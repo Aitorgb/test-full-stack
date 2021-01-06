@@ -99,3 +99,12 @@ input:invalid {
 #button-back {
     padding: 0.4em 5em;
 }
+
+
+#assessment-result > .chart-container {
+  
+    display: flex;
+   justify-content: center;
+}
+
+

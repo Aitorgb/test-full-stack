@@ -57,8 +57,7 @@ router.post('/result', (req, res, next) => {
 		client.satisfation = clientSatisfation > 1 ? 1 : parseFloat(clientSatisfation);
 		coachWithMinReputation.clients.push(client);
 	});
-
-	allCoach.map((l) => console.log(l));
+	
 	const clientsSatisfied = allCoach.map((coach) =>
 		coach.clients.reduce((prev, client) => (client.satisfation > 0.9 ? prev + 1 : prev), 0)
 	).reduce((prev, coach) => prev + coach, 0);

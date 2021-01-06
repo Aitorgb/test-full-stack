@@ -44,12 +44,14 @@
             usuarios por falta de plazas disponibles en los entrenadores</div>
         {{/if}}
         <div class="none mt-3 mx-3 text-justify font-weight-light" id="assessment-result">
-            <div>Indice de satisfación del conjunto de clientes: <span class="font-italic">{{satisfation coach totalClients}}</span></div>
-            <div>Porcentaje de clientes satisfechos: <span class="font-italic">{{percentageSatisfation coach totalClients}} %</span></div>
-            <div class="container">
-            <canvas id="my-chart" width="500" height="100"></canvas>
-</div>
-            <div class="row mt-3">
+            <div class="text-left">Indice de satisfación del conjunto de clientes: <span class="font-italic font-weight-bold">{{satisfation coach
+                    totalClients}}</span></div>
+            <div class="text-left">Porcentaje de clientes satisfechos: <span class="font-italic font-weight-bold">{{percentageSatisfation coach
+                    totalClients}} %</span></div>
+            <div class="chart-container my-3">
+                <canvas id="my-chart"></canvas>
+            </div>
+            <div class="row ">
                 <h6 class="h6 font-italic">Calculo del indice de satisfación</h6>
                 <p>
                     El calculo del indice de satisfación del conjunto de clientes se ha realizado de la siguiente
@@ -105,11 +107,13 @@
     }]
         },
     options: {
+        responsive: false,
+        maintainAspectRatio : false,
         title: {
             display: true,
                 text: `Grafica de satisfación. Total clientes: {{totalClients}}`
         },
-        
+
 
     }
     });
